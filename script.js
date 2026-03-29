@@ -1,3 +1,8 @@
+const LESSONS_KEY = "youooo_git_v5_lessons";
+const CHALLENGES_KEY = "youooo_git_v5_challenges";
+const EXAM_KEY = "youooo_git_v5_exam_passed";
+const CERT_NAME_KEY = "youooo_git_v5_name";
+
 /* Mobile nav */
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
@@ -14,51 +19,34 @@ if (menuToggle && mainNav) {
   });
 }
 
-/* Tabs for lessons page */
-const tabButtons = document.querySelectorAll(".tab-btn");
-const tabPanels = document.querySelectorAll(".tab-panel");
-
-tabButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    tabButtons.forEach((btn) => btn.classList.remove("active"));
-    tabPanels.forEach((panel) => panel.classList.remove("active"));
-
-    button.classList.add("active");
-    const target = document.getElementById(button.dataset.tab);
-    if (target) target.classList.add("active");
-  });
-});
-
-/* Storage keys */
-const LESSONS_KEY = "youooo_git_v4_lessons";
-const CHALLENGES_KEY = "youooo_git_v4_challenges";
-const CERT_NAME_KEY = "youooo_git_v4_name";
-
 /* Helpers */
 function getStoredArray(key, size) {
   const saved = JSON.parse(localStorage.getItem(key) || "[]");
-  const result = Array.from({ length: size }, (_, i) => !!saved[i]);
-  return result;
+  return Array.from({ length: size }, (_, i) => !!saved[i]);
 }
 
 function saveArray(key, values) {
   localStorage.setItem(key, JSON.stringify(values));
 }
 
-function getLessonChecks() {
-  return document.querySelectorAll(".lesson-check");
+function isExamPassed() {
+  return localStorage.getItem(EXAM_KEY) === "true";
 }
 
-function getChallengeChecks() {
-  return document.querySelectorAll(".challenge-check");
+function setExamPassed(value) {
+  localStorage.setItem(EXAM_KEY, value ? "true" : "false");
 }
 
 /* Lessons page */
 function initLessonsPage() {
-  const lessonChecks = getLessonChecks();
+  const lessonChecks = document.querySelectorAll(".lesson-check");
+  const lessonBlocks = document.querySelectorAll(".lesson-block");
+  const sideLinks = document.querySelectorAll(".side-link");
+
   if (!lessonChecks.length) return;
 
   const saved = getStoredArray(LESSONS_KEY, lessonChecks.length);
+
   lessonChecks.forEach((check, index) => {
     check.checked = saved[index];
     check.addEventListener("change", () => {
@@ -68,45 +56,250 @@ function initLessonsPage() {
     });
   });
 
+  sideLinks.forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetId = button.dataset.target;
+      const targetBlock = document.getElementById(targetId);
+      if (!targetBlock) return;
+
+      if (targetBlock.classList.contains("is-locked")) return;
+
+      sideLinks.forEach((btn) => btn.classList.remove("active"));
+      lessonBlocks.forEach((block) => block.classList.remove("active"));
+
+      button.classList.add("active");
+      targetBlock.classList.add("active");
+      targetBlock.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
   updateLessonLocks();
 }
 
 function updateLessonLocks() {
-  const lessonChecks = getLessonChecks();
+  const lessonChecks = document.querySelectorAll(".lesson-check");
+  if (!lessonChecks.length) return;
+
   const completed = [...lessonChecks].filter((item) => item.checked).length;
+  const lessonBlocks = document.querySelectorAll(".locked-lesson");
+  const sideLinks = document.querySelectorAll(".side-link");
 
-  const intermediateLock = document.getElementById("intermediateLock");
-  const intermediateContent = document.getElementById("intermediateContent");
-  const advancedLock = document.getElementById("advancedLock");
-  const advancedContent = document.getElementById("advancedContent");
+  lessonBlocks.forEach((block) => {
+    const unlockAt = Number(block.dataset.unlock || "0");
+    const shouldUnlock = completed >= unlockAt;
 
-  if (intermediateLock && intermediateContent) {
-    if (completed >= 4) {
-      intermediateLock.classList.add("hidden");
-      intermediateContent.classList.remove("locked");
+    if (shouldUnlock) {
+      block.classList.remove("is-locked");
     } else {
-      intermediateLock.classList.remove("hidden");
-      intermediateContent.classList.add("locked");
+      block.classList.add("is-locked");
     }
+  });
+
+  sideLinks.forEach((button) => {
+    const target = document.getElementById(button.dataset.target);
+    if (!target) return;
+
+    if (target.classList.contains("is-locked")) {
+      button.disabled = true;
+      button.style.opacity = "0.45";
+      button.style.cursor = "not-allowed";
+    } else {
+      button.disabled = false;
+      button.style.opacity = "1";
+      button.style.cursor = "pointer";
+    }
+  });
+
+  const currentActive = document.querySelector(".lesson-block.active");
+  if (currentActive && currentActive.classList.contains("is-locked")) {
+    const firstUnlocked = document.querySelector(".lesson-block:not(.is-locked)");
+    const firstSide = document.querySelector('.side-link:not([disabled])');
+
+    document.querySelectorAll(".lesson-block").forEach((block) => block.classList.remove("active"));
+    document.querySelectorAll(".side-link").forEach((btn) => btn.classList.remove("active"));
+
+    if (firstUnlocked) firstUnlocked.classList.add("active");
+    if (firstSide) firstSide.classList.add("active");
+  }
+}
+
+/* Dictionary page */
+const commandData = [
+  {
+    name: "git init",
+    text: `> git init
+
+Creates a new Git repository in the current folder.
+
+Use it when:
+- starting a new project
+- turning an existing folder into a Git repo`
+  },
+  {
+    name: "git status",
+    text: `> git status
+
+Shows:
+- current branch
+- modified files
+- staged files
+- untracked files`
+  },
+  {
+    name: "git add .",
+    text: `> git add .
+
+Stages all changed files for the next commit.`
+  },
+  {
+    name: 'git commit -m "message"',
+    text: `> git commit -m "message"
+
+Creates a commit from staged changes.
+
+Good examples:
+- "Fix mobile menu"
+- "Add lesson page"`
+  },
+  {
+    name: "git log --oneline",
+    text: `> git log --oneline
+
+Shows commit history in a short readable form.`
+  },
+  {
+    name: "git switch -c feature-x",
+    text: `> git switch -c feature-x
+
+Creates a new branch and switches to it immediately.`
+  },
+  {
+    name: "git merge feature-x",
+    text: `> git merge feature-x
+
+Merges the selected branch into the current branch.`
+  },
+  {
+    name: "git remote add origin URL",
+    text: `> git remote add origin URL
+
+Connects your local project to a remote repository such as GitHub.`
+  },
+  {
+    name: "git push -u origin main",
+    text: `> git push -u origin main
+
+Uploads your local commits and sets upstream tracking.`
+  },
+  {
+    name: "git pull origin main",
+    text: `> git pull origin main
+
+Downloads and merges the latest changes from the remote repository.`
+  },
+  {
+    name: "git stash",
+    text: `> git stash
+
+Temporarily stores unfinished local changes.`
+  },
+  {
+    name: "git stash pop",
+    text: `> git stash pop
+
+Restores the latest stashed work and removes it from the stash list.`
+  },
+  {
+    name: "git rebase main",
+    text: `> git rebase main
+
+Moves your current branch commits on top of updated main.
+
+Benefit:
+- cleaner history
+
+Warning:
+- be careful on shared branches`
+  },
+  {
+    name: "git revert abc123",
+    text: `> git revert abc123
+
+Creates a new commit that reverses an older commit safely.`
+  },
+  {
+    name: "git reset --hard HEAD~1",
+    text: `> git reset --hard HEAD~1
+
+Moves history back and discards local changes.
+
+Warning:
+- can permanently remove work`
+  },
+  {
+    name: "git branch",
+    text: `> git branch
+
+Lists or creates branches depending on usage.`
+  }
+];
+
+function initDictionaryPage() {
+  const commandSearch = document.getElementById("commandSearch");
+  const commandList = document.getElementById("commandList");
+  const commandDisplay = document.getElementById("commandDisplay");
+
+  if (!commandSearch || !commandList || !commandDisplay) return;
+
+  function renderCommands(filter = "") {
+    commandList.innerHTML = "";
+
+    const filtered = commandData.filter((cmd) =>
+      cmd.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    if (!filtered.length) {
+      commandList.innerHTML = '<div class="card">No command found.</div>';
+      commandDisplay.textContent = "No command found.";
+      return;
+    }
+
+    filtered.forEach((cmd, index) => {
+      const button = document.createElement("button");
+      button.className = "command-btn";
+      button.textContent = cmd.name;
+
+      button.addEventListener("click", () => {
+        document.querySelectorAll("#commandList .command-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        button.classList.add("active");
+        commandDisplay.textContent = cmd.text;
+      });
+
+      commandList.appendChild(button);
+
+      if (index === 0) {
+        button.classList.add("active");
+        commandDisplay.textContent = cmd.text;
+      }
+    });
   }
 
-  if (advancedLock && advancedContent) {
-    if (completed >= 8) {
-      advancedLock.classList.add("hidden");
-      advancedContent.classList.remove("locked");
-    } else {
-      advancedLock.classList.remove("hidden");
-      advancedContent.classList.add("locked");
-    }
-  }
+  commandSearch.addEventListener("input", (e) => {
+    renderCommands(e.target.value);
+  });
+
+  renderCommands();
 }
 
 /* Challenges page */
 function initChallengesPage() {
-  const challengeChecks = getChallengeChecks();
+  const challengeChecks = document.querySelectorAll(".challenge-check");
   if (!challengeChecks.length) return;
 
   const saved = getStoredArray(CHALLENGES_KEY, challengeChecks.length);
+
   challengeChecks.forEach((check, index) => {
     check.checked = saved[index];
     check.addEventListener("change", () => {
@@ -116,13 +309,75 @@ function initChallengesPage() {
   });
 }
 
-/* Home page progress + badges */
+/* Exam page */
+function initExamPage() {
+  const answerButtons = document.querySelectorAll(".answer-btn");
+  const checkExamBtn = document.getElementById("checkExam");
+  const resetExamBtn = document.getElementById("resetExam");
+  const examResult = document.getElementById("examResult");
+  const examBreakdown = document.getElementById("examBreakdown");
+  const examPassBox = document.getElementById("examPassBox");
+
+  if (!answerButtons.length || !checkExamBtn || !resetExamBtn) return;
+
+  answerButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const question = button.closest(".question");
+      question.querySelectorAll(".answer-btn").forEach((btn) => btn.classList.remove("selected"));
+      button.classList.add("selected");
+    });
+  });
+
+  checkExamBtn.addEventListener("click", () => {
+    const questions = document.querySelectorAll(".question");
+    let score = 0;
+    let details = [];
+
+    questions.forEach((question, index) => {
+      const selected = question.querySelector(".answer-btn.selected");
+      if (selected && selected.classList.contains("correct")) {
+        score++;
+        details.push(`Question ${index + 1}: Correct`);
+      } else {
+        details.push(`Question ${index + 1}: Incorrect`);
+      }
+    });
+
+    examResult.textContent = `Your score: ${score} / ${questions.length}`;
+    examBreakdown.textContent = details.join("\n");
+
+    if (score >= 6) {
+      examResult.textContent += " — Passed. Certificate unlocked.";
+      setExamPassed(true);
+      if (examPassBox) examPassBox.classList.remove("hidden");
+    } else {
+      examResult.textContent += " — Not passed yet. You need 6 / 8 or higher.";
+      setExamPassed(false);
+      if (examPassBox) examPassBox.classList.add("hidden");
+    }
+  });
+
+  resetExamBtn.addEventListener("click", () => {
+    answerButtons.forEach((btn) => btn.classList.remove("selected"));
+    examResult.textContent = "";
+    examBreakdown.textContent = "";
+    setExamPassed(false);
+    if (examPassBox) examPassBox.classList.add("hidden");
+  });
+
+  if (isExamPassed() && examPassBox) {
+    examPassBox.classList.remove("hidden");
+  }
+}
+
+/* Home page progress + badges + certificate */
 function updateHomeProgress() {
   const progressPercent = document.getElementById("progressPercent");
   const progressFill = document.getElementById("progressFill");
   const lessonCount = document.getElementById("lessonCount");
   const challengeCount = document.getElementById("challengeCount");
   const badgeCount = document.getElementById("badgeCount");
+  const examStatus = document.getElementById("examStatus");
 
   if (!progressPercent || !progressFill) return;
 
@@ -131,60 +386,35 @@ function updateHomeProgress() {
 
   const completedLessons = lessons.filter(Boolean).length;
   const completedChallenges = challenges.filter(Boolean).length;
+  const passedExam = isExamPassed();
 
   let earnedBadges = 0;
 
-  const beginnerBadge = document.querySelector("#badge-beginner .badge-status");
-  const branchingBadge = document.querySelector("#badge-branching .badge-status");
-  const challengeBadge = document.querySelector("#badge-challenge .badge-status");
-  const expertBadge = document.querySelector("#badge-expert .badge-status");
+  const starter = document.getElementById("badge-starter");
+  const branch = document.getElementById("badge-branch");
+  const challenge = document.getElementById("badge-challenge");
+  const certified = document.getElementById("badge-certified");
 
-  if (beginnerBadge) {
-    if (completedLessons >= 4) {
-      beginnerBadge.textContent = "Unlocked";
-      beginnerBadge.className = "badge-status unlocked";
-      earnedBadges++;
+  function unlockBadge(element, unlocked) {
+    if (!element) return false;
+    if (unlocked) {
+      element.textContent = "Unlocked";
+      element.className = "badge-status unlocked";
+      return true;
     } else {
-      beginnerBadge.textContent = "Locked";
-      beginnerBadge.className = "badge-status locked";
+      element.textContent = "Locked";
+      element.className = "badge-status locked";
+      return false;
     }
   }
 
-  if (branchingBadge) {
-    if (completedLessons >= 8) {
-      branchingBadge.textContent = "Unlocked";
-      branchingBadge.className = "badge-status unlocked";
-      earnedBadges++;
-    } else {
-      branchingBadge.textContent = "Locked";
-      branchingBadge.className = "badge-status locked";
-    }
-  }
+  if (unlockBadge(starter, completedLessons >= 4)) earnedBadges++;
+  if (unlockBadge(branch, completedLessons >= 8)) earnedBadges++;
+  if (unlockBadge(challenge, completedChallenges >= 3)) earnedBadges++;
+  if (unlockBadge(certified, passedExam)) earnedBadges++;
 
-  if (challengeBadge) {
-    if (completedChallenges >= 3) {
-      challengeBadge.textContent = "Unlocked";
-      challengeBadge.className = "badge-status unlocked";
-      earnedBadges++;
-    } else {
-      challengeBadge.textContent = "Locked";
-      challengeBadge.className = "badge-status locked";
-    }
-  }
-
-  if (expertBadge) {
-    if (completedLessons === 12 && completedChallenges === 6) {
-      expertBadge.textContent = "Unlocked";
-      expertBadge.className = "badge-status unlocked";
-      earnedBadges++;
-    } else {
-      expertBadge.textContent = "Locked";
-      expertBadge.className = "badge-status locked";
-    }
-  }
-
-  const totalTasks = 18;
-  const doneTasks = completedLessons + completedChallenges;
+  const totalTasks = 19; // 12 lessons + 6 challenges + 1 exam
+  const doneTasks = completedLessons + completedChallenges + (passedExam ? 1 : 0);
   const percent = Math.round((doneTasks / totalTasks) * 100);
 
   progressPercent.textContent = `${percent}%`;
@@ -193,9 +423,22 @@ function updateHomeProgress() {
   if (lessonCount) lessonCount.textContent = completedLessons;
   if (challengeCount) challengeCount.textContent = completedChallenges;
   if (badgeCount) badgeCount.textContent = earnedBadges;
+  if (examStatus) examStatus.textContent = passedExam ? "Yes" : "No";
+
+  const lockedBox = document.getElementById("certificateLockedBox");
+  const unlockedBox = document.getElementById("certificateUnlockedBox");
+
+  if (lockedBox && unlockedBox) {
+    if (passedExam) {
+      lockedBox.classList.add("hidden");
+      unlockedBox.classList.remove("locked");
+    } else {
+      lockedBox.classList.remove("hidden");
+      unlockedBox.classList.add("locked");
+    }
+  }
 }
 
-/* Certificate */
 function initCertificate() {
   const studentNameInput = document.getElementById("studentName");
   const updateCertificateBtn = document.getElementById("updateCertificate");
@@ -220,6 +463,8 @@ function initCertificate() {
 
   if (downloadCertificateBtn) {
     downloadCertificateBtn.addEventListener("click", () => {
+      if (!isExamPassed()) return;
+
       const name = certificateName.textContent.trim() || "Your Name";
 
       const canvas = document.createElement("canvas");
@@ -281,7 +526,9 @@ function initCertificate() {
 /* Init */
 document.addEventListener("DOMContentLoaded", () => {
   initLessonsPage();
+  initDictionaryPage();
   initChallengesPage();
+  initExamPage();
   updateHomeProgress();
   initCertificate();
 });
