@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Youooo Git Academy V4</title>
-  <meta name="description" content="Learn Git from beginner to expert with Youooo Git Academy V4." />
+  <title>Youooo Git Academy V5</title>
+  <meta name="description" content="Learn Git from beginner to expert with Youooo Git Academy V5." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-page="home">
@@ -17,7 +17,9 @@
       <nav id="mainNav" class="main-nav">
         <a href="index.html">Home</a>
         <a href="lessons.html">Lessons</a>
+        <a href="dictionary.html">Dictionary</a>
         <a href="challenges.html">Challenges</a>
+        <a href="exam.html">Exam</a>
       </nav>
     </div>
   </header>
@@ -26,34 +28,35 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">Youooo Academy Track</span>
+          <span class="eyebrow">Youooo Academy</span>
           <h1>Master Git From Beginner to Expert</h1>
           <p class="hero-text">
-            Learn Git step by step with beginner lessons, real workflows, command practice,
-            challenge labs, progress tracking, badge rewards, and a completion certificate.
+            Learn Git with structured lessons, a searchable command dictionary,
+            hands-on challenges, a final exam, unlockable badges, and a certificate
+            that opens only after you pass.
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="lessons.html">Start Lessons</a>
-            <a class="btn btn-secondary" href="challenges.html">Open Challenges</a>
+            <a class="btn btn-primary" href="lessons.html">Start Learning</a>
+            <a class="btn btn-secondary" href="exam.html">Take Final Exam</a>
           </div>
 
           <div class="hero-stats">
             <div class="stat-card">
-              <strong>3</strong>
-              <span>Levels</span>
+              <strong>12</strong>
+              <span>Lessons</span>
             </div>
             <div class="stat-card">
-              <strong>12</strong>
-              <span>Core Lessons</span>
+              <strong>16</strong>
+              <span>Commands</span>
             </div>
             <div class="stat-card">
               <strong>6</strong>
               <span>Challenges</span>
             </div>
             <div class="stat-card">
-              <strong>4</strong>
-              <span>Badges</span>
+              <strong>1</strong>
+              <span>Certificate</span>
             </div>
           </div>
         </div>
@@ -66,7 +69,7 @@
             <p>$ git init</p>
             <p>Initialized empty Git repository</p>
             <p>$ git add .</p>
-            <p>$ git commit -m "Start project"</p>
+            <p>$ git commit -m "Build project"</p>
             <p>$ git switch -c feature-navbar</p>
             <p>$ git push -u origin feature-navbar</p>
             <p>$ git merge feature-navbar</p>
@@ -79,9 +82,10 @@
       <div class="container">
         <div class="progress-card">
           <div class="progress-top">
-            <h2>Your Git Academy Progress</h2>
+            <h2>Your Academy Progress</h2>
             <span id="progressPercent">0%</span>
           </div>
+
           <div class="progress-bar">
             <div id="progressFill" class="progress-fill"></div>
           </div>
@@ -99,6 +103,10 @@
               <strong id="badgeCount">0</strong>
               <span>Badges Earned</span>
             </div>
+            <div class="mini-stat">
+              <strong id="examStatus">No</strong>
+              <span>Exam Passed</span>
+            </div>
           </div>
         </div>
       </div>
@@ -108,14 +116,14 @@
       <div class="container">
         <div class="section-heading">
           <span class="eyebrow">Roadmap</span>
-          <h2>Learning Path</h2>
-          <p>Go from basic Git commands to real collaboration and recovery workflows.</p>
+          <h2>Git Learning Path</h2>
+          <p>Move from Git basics to real-world collaboration and recovery workflows.</p>
         </div>
 
         <div class="roadmap-grid">
           <article class="card">
             <div class="level-badge beginner">Beginner</div>
-            <h3>Git Foundations</h3>
+            <h3>Foundations</h3>
             <ul>
               <li>What Git is</li>
               <li>git init</li>
@@ -135,7 +143,7 @@
               <li>git merge</li>
               <li>git push</li>
               <li>git pull</li>
-              <li>feature workflow</li>
+              <li>GitHub Pages workflow</li>
             </ul>
           </article>
 
@@ -147,8 +155,8 @@
               <li>git rebase</li>
               <li>git revert</li>
               <li>git reset</li>
-              <li>conflicts</li>
-              <li>recovery</li>
+              <li>conflict resolution</li>
+              <li>VS Code workflow</li>
             </ul>
           </article>
         </div>
@@ -158,52 +166,58 @@
     <section class="section alt-bg">
       <div class="container">
         <div class="section-heading">
-          <span class="eyebrow">Badges</span>
-          <h2>Achievement System</h2>
-          <p>Complete lessons and challenges to unlock badges.</p>
+          <span class="eyebrow">Achievements</span>
+          <h2>Badge System</h2>
+          <p>Unlock progress milestones as you move through the academy.</p>
         </div>
 
         <div class="badges-grid">
-          <article class="card badge-card" id="badge-beginner">
+          <article class="card badge-card">
             <div class="badge-icon">🌱</div>
-            <h3>Git Beginner</h3>
-            <p>Complete 4 lessons.</p>
-            <span class="badge-status locked">Locked</span>
+            <h3>Starter</h3>
+            <p>Complete 4 lessons</p>
+            <span id="badge-starter" class="badge-status locked">Locked</span>
           </article>
 
-          <article class="card badge-card" id="badge-branching">
+          <article class="card badge-card">
             <div class="badge-icon">🌿</div>
-            <h3>Branch Master</h3>
-            <p>Complete 8 lessons.</p>
-            <span class="badge-status locked">Locked</span>
+            <h3>Branch Builder</h3>
+            <p>Complete 8 lessons</p>
+            <span id="badge-branch" class="badge-status locked">Locked</span>
           </article>
 
-          <article class="card badge-card" id="badge-challenge">
+          <article class="card badge-card">
             <div class="badge-icon">🔥</div>
-            <h3>Challenge Finisher</h3>
-            <p>Complete 3 challenges.</p>
-            <span class="badge-status locked">Locked</span>
+            <h3>Challenge Runner</h3>
+            <p>Complete 3 challenges</p>
+            <span id="badge-challenge" class="badge-status locked">Locked</span>
           </article>
 
-          <article class="card badge-card" id="badge-expert">
+          <article class="card badge-card">
             <div class="badge-icon">🏆</div>
-            <h3>Git Expert Track</h3>
-            <p>Complete all lessons and all challenges.</p>
-            <span class="badge-status locked">Locked</span>
+            <h3>Certified Track</h3>
+            <p>Pass the final exam</p>
+            <span id="badge-certified" class="badge-status locked">Locked</span>
           </article>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container certificate-home-wrap">
+      <div class="container">
         <div class="section-heading">
           <span class="eyebrow">Certificate</span>
-          <h2>Completion Certificate</h2>
-          <p>Preview your certificate after finishing the academy.</p>
+          <h2>Certificate Unlock</h2>
+          <p>The certificate opens only after you pass the final exam.</p>
         </div>
 
-        <div class="certificate-wrap">
+        <div id="certificateLockedBox" class="card lock-box center-box">
+          <h3>Certificate Locked</h3>
+          <p>Pass the final exam on the Exam page to unlock the certificate generator.</p>
+          <a class="btn btn-primary" href="exam.html">Go to Exam</a>
+        </div>
+
+        <div id="certificateUnlockedBox" class="certificate-wrap locked-content locked">
           <div class="card certificate-form-box">
             <label for="studentName">Student Name</label>
             <input type="text" id="studentName" placeholder="Enter full name" />
@@ -229,7 +243,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>© 2026 Youooo Git Academy V4</p>
+      <p>© 2026 Youooo Git Academy V5</p>
     </div>
   </footer>
 
