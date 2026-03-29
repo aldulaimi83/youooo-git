@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youooo Git Challenges V4</title>
+  <meta name="description" content="Git challenges and practice labs." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="challenges">
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a href="index.html" class="brand">Youooo Git</a>
+
+      <button id="menuToggle" class="menu-toggle" aria-label="Open menu">☰</button>
+
+      <nav id="mainNav" class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="challenges.html">Challenges</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero small-hero">
+      <div class="container">
+        <span class="eyebrow">Practice</span>
+        <h1>Git Challenges</h1>
+        <p>Complete hands-on tasks and mark them done to build confidence with real Git workflows.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="practice-grid">
+          <article class="card challenge-card">
+            <div class="lesson-head">
+              <h3>1. Create Your First Repo</h3>
+              <label><input type="checkbox" class="challenge-check" data-challenge="challenge1" /> Done</label>
+            </div>
+            <p>Create a folder, run <code>git init</code>, add a README, and make your first commit.</p>
+          </article>
+
+          <article class="card challenge-card">
+            <div class="lesson-head">
+              <h3>2. Track Two File Changes</h3>
+              <label><input type="checkbox" class="challenge-check" data-challenge="challenge2" /> Done</label>
+            </div>
+            <p>Edit two files, stage them with <code>git add .</code>, and commit the update.</p>
+          </article>
+
+          <article class="card challenge-card">
+            <div class="lesson-head">
+              <h3>3. Build a Feature Branch</h3>
+              <label><input type="checkbox" class="challenge-check" data-challenge="challenge3" /> Done</label>
+            </div>
+            <p>Create a new branch, change a page, commit, and merge it into main.</p>
+          </article>
+
+          <article class="card challenge-card">
+            <div class="lesson-head">
+              <h3>4. Push to GitHub</h3>
+              <label><input type="checkbox" class="challenge-check" data-challenge="challenge4" /> Done</label>
+            </div>
+            <p>Connect a local repo to GitHub and push your branch with upstream tracking.</p>
+          </article>
+
+          <article class="card challenge-card">
+            <div class="lesson-head">
+              <h3>5. GitHub Pages Update</h3>
+              <label><input type="checkbox" class="challenge-check" data-challenge="challenge5" /> Done</label>
+            </div>
+            <p>Update a static website repo and publish the changes by pushing to main.</p>
+          </article>
+
+          <article class="card challenge-card">
+            <div class="lesson-head">
+              <h3>6. Conflict Resolution Lab</h3>
+              <label><input type="checkbox" class="challenge-check" data-challenge="challenge6" /> Done</label>
+            </div>
+            <p>Create a merge conflict on purpose, resolve it, then commit the fixed result.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt-bg">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Suggested Workflow</span>
+          <h2>Feature Branch Flow</h2>
+          <p>Use this process during most real projects.</p>
+        </div>
+
+        <div class="workflow-box">
+          <div class="flow-step">pull main</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">create branch</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">edit files</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">commit</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">push</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">merge</div>
+        </div>
+
+        <div class="card code-panel">
+          <div class="code-block">git switch main
+git pull origin main
+git switch -c feature-update
+git add .
+git commit -m "Build feature"
+git push -u origin feature-update</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Youooo Git Academy V4</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
