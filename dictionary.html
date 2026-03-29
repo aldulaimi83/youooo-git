@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youooo Git Dictionary V5</title>
+  <meta name="description" content="Searchable Git command dictionary." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="dictionary">
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a href="index.html" class="brand">Youooo Git</a>
+
+      <button id="menuToggle" class="menu-toggle" aria-label="Open menu">☰</button>
+
+      <nav id="mainNav" class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="dictionary.html">Dictionary</a>
+        <a href="challenges.html">Challenges</a>
+        <a href="exam.html">Exam</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero small-hero">
+      <div class="container">
+        <span class="eyebrow">Dictionary</span>
+        <h1>Searchable Git Command Dictionary</h1>
+        <p>Search a command, click it, and read the meaning and use case.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container dictionary-layout">
+        <div class="dictionary-left">
+          <input id="commandSearch" class="search-input" type="text" placeholder="Search git push, rebase, stash..." />
+          <div id="commandList" class="command-list"></div>
+        </div>
+
+        <div class="card dictionary-output">
+          <h3>Command Explanation</h3>
+          <div id="commandDisplay" class="code-viewer">Select a command to view details.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Youooo Git Academy V5</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
