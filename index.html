@@ -3,282 +3,550 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Youooo Git Academy</title>
+  <title>Youooo Git Academy V2</title>
+  <meta name="description" content="Learn Git from beginner to expert with Youooo Git Academy." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="logo">Youooo Git</div>
-    <nav class="nav">
-      <a href="#home">Home</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#lessons">Lessons</a>
-      <a href="#playground">Playground</a>
-      <a href="#quiz">Quiz</a>
-      <a href="#certificate">Certificate</a>
-    </nav>
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a href="#home" class="brand">Youooo Git</a>
+
+      <button id="menuToggle" class="menu-toggle" aria-label="Open menu">
+        ☰
+      </button>
+
+      <nav id="mainNav" class="main-nav">
+        <a href="#home">Home</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#lessons">Lessons</a>
+        <a href="#commands">Commands</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#projects">Projects</a>
+        <a href="#exam">Final Exam</a>
+        <a href="#certificate">Certificate</a>
+      </nav>
+    </div>
   </header>
 
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h1>Master Git from Beginner to Expert</h1>
-      <p>
-        Learn Git step by step with simple lessons, real commands, practice examples,
-        and quizzes. Build your version control skills the practical way.
-      </p>
-      <div class="hero-buttons">
-        <a href="#roadmap" class="btn primary">Start Learning</a>
-        <a href="#playground" class="btn secondary">Try Commands</a>
-      </div>
-    </div>
-  </section>
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <span class="eyebrow">Youooo Academy Track</span>
+          <h1>Master Git From Beginner to Expert</h1>
+          <p class="hero-text">
+            Learn Git the practical way. Understand repositories, branches, commits,
+            remotes, merges, rebases, conflict resolution, and real workflows used in teams.
+          </p>
 
-  <section id="roadmap" class="section">
-    <h2>Learning Roadmap</h2>
-    <div class="roadmap-grid">
-      <div class="card">
-        <h3>Beginner</h3>
-        <ul>
-          <li>What is Git?</li>
-          <li>Install Git</li>
-          <li>git init</li>
-          <li>git status</li>
-          <li>git add</li>
-          <li>git commit</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Intermediate</h3>
-        <ul>
-          <li>git log</li>
-          <li>git branch</li>
-          <li>git checkout / switch</li>
-          <li>git merge</li>
-          <li>git remote</li>
-          <li>git push / pull</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Advanced</h3>
-        <ul>
-          <li>git rebase</li>
-          <li>git stash</li>
-          <li>git reset</li>
-          <li>git revert</li>
-          <li>Conflict resolution</li>
-          <li>Collaboration workflows</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#roadmap">Start Learning</a>
+            <a class="btn btn-secondary" href="#exam">Take Final Exam</a>
+          </div>
 
-  <section id="lessons" class="section">
-    <h2>Lessons</h2>
+          <div class="hero-stats">
+            <div class="stat-card">
+              <strong>3</strong>
+              <span>Skill Levels</span>
+            </div>
+            <div class="stat-card">
+              <strong>20+</strong>
+              <span>Core Commands</span>
+            </div>
+            <div class="stat-card">
+              <strong>4</strong>
+              <span>Practice Projects</span>
+            </div>
+          </div>
+        </div>
 
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="beginner">Beginner</button>
-      <button class="tab-btn" data-tab="intermediate">Intermediate</button>
-      <button class="tab-btn" data-tab="advanced">Advanced</button>
-    </div>
-
-    <div class="tab-content active" id="beginner">
-      <div class="lesson-card">
-        <h3>1. What is Git?</h3>
-        <p>
-          Git is a version control system. It helps you track changes in files,
-          go back to earlier versions, and collaborate with other people.
-        </p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>2. Start a Git repository</h3>
-        <div class="code-block">git init</div>
-        <p>This creates a new Git repository in your project folder.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>3. Check project status</h3>
-        <div class="code-block">git status</div>
-        <p>This shows changed files, staged files, and branch info.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>4. Add files</h3>
-        <div class="code-block">git add .</div>
-        <p>This stages all changed files for the next commit.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>5. Save changes</h3>
-        <div class="code-block">git commit -m "Initial commit"</div>
-        <p>This records a snapshot of your staged changes.</p>
-      </div>
-    </div>
-
-    <div class="tab-content" id="intermediate">
-      <div class="lesson-card">
-        <h3>1. View commit history</h3>
-        <div class="code-block">git log --oneline</div>
-        <p>Shows a short list of previous commits.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>2. Create a new branch</h3>
-        <div class="code-block">git branch feature-login</div>
-        <p>Creates a new branch for your work.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>3. Switch branches</h3>
-        <div class="code-block">git switch feature-login</div>
-        <p>Moves you to another branch.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>4. Merge a branch</h3>
-        <div class="code-block">git merge feature-login</div>
-        <p>Merges changes from one branch into the current branch.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>5. Connect to GitHub</h3>
-        <div class="code-block">git remote add origin https://github.com/username/repo.git</div>
-        <p>Links your local project to a remote repository.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>6. Push changes</h3>
-        <div class="code-block">git push -u origin main</div>
-        <p>Uploads your local commits to GitHub.</p>
-      </div>
-    </div>
-
-    <div class="tab-content" id="advanced">
-      <div class="lesson-card">
-        <h3>1. Rebase</h3>
-        <div class="code-block">git rebase main</div>
-        <p>Moves your branch changes on top of the latest main branch.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>2. Stash temporary work</h3>
-        <div class="code-block">git stash</div>
-        <p>Saves uncommitted changes temporarily.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>3. Restore stashed work</h3>
-        <div class="code-block">git stash pop</div>
-        <p>Brings back your saved temporary changes.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>4. Undo a commit safely</h3>
-        <div class="code-block">git revert &lt;commit-id&gt;</div>
-        <p>Creates a new commit that undoes an earlier commit.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>5. Reset branch</h3>
-        <div class="code-block">git reset --hard HEAD~1</div>
-        <p>Moves branch history back one commit and discards changes. Use carefully.</p>
-      </div>
-
-      <div class="lesson-card">
-        <h3>6. Resolve conflicts</h3>
-        <p>
-          Conflicts happen when Git cannot automatically combine changes.
-          Edit the file, keep the correct code, then:
-        </p>
-        <div class="code-block">git add .<br>git commit -m "Resolve merge conflict"</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="playground" class="section">
-    <h2>Git Command Playground</h2>
-    <p class="section-text">
-      Click a command to see what it does. This is a learning simulator, not a real terminal.
-    </p>
-
-    <div class="playground-grid">
-      <div class="commands-panel">
-        <button class="command-btn" data-command="init">git init</button>
-        <button class="command-btn" data-command="status">git status</button>
-        <button class="command-btn" data-command="add">git add .</button>
-        <button class="command-btn" data-command="commit">git commit -m "message"</button>
-        <button class="command-btn" data-command="branch">git branch feature-x</button>
-        <button class="command-btn" data-command="switch">git switch feature-x</button>
-        <button class="command-btn" data-command="merge">git merge feature-x</button>
-        <button class="command-btn" data-command="push">git push -u origin main</button>
-        <button class="command-btn" data-command="pull">git pull origin main</button>
-        <button class="command-btn" data-command="stash">git stash</button>
-        <button class="command-btn" data-command="rebase">git rebase main</button>
-        <button class="command-btn" data-command="revert">git revert abc123</button>
-      </div>
-
-      <div class="terminal-panel">
-        <div class="terminal-header">Youooo Git Simulator</div>
-        <div id="terminalOutput" class="terminal-output">
-          Select a command to see its explanation here...
+        <div class="hero-right">
+          <div class="terminal-card">
+            <div class="terminal-top">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="terminal-body">
+              <p>$ git init</p>
+              <p>Initialized empty Git repository</p>
+              <p>$ git add .</p>
+              <p>$ git commit -m "Start project"</p>
+              <p>[main 1a2b3c4] Start project</p>
+              <p>$ git branch feature-login</p>
+              <p>$ git switch feature-login</p>
+              <p>$ git push -u origin main</p>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+
+    <section id="roadmap" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Learning Path</span>
+          <h2>Git Roadmap</h2>
+          <p>
+            Move from basic local version control to advanced collaboration and recovery workflows.
+          </p>
+        </div>
+
+        <div class="roadmap-grid">
+          <article class="card roadmap-card">
+            <div class="level-badge beginner">Beginner</div>
+            <h3>Git Foundations</h3>
+            <ul>
+              <li>What Git is and why it matters</li>
+              <li>Create a repository</li>
+              <li>Track file changes</li>
+              <li>Stage and commit work</li>
+              <li>Read status and history</li>
+            </ul>
+          </article>
+
+          <article class="card roadmap-card">
+            <div class="level-badge intermediate">Intermediate</div>
+            <h3>Branches and GitHub</h3>
+            <ul>
+              <li>Create and switch branches</li>
+              <li>Merge branch changes</li>
+              <li>Connect to remote repositories</li>
+              <li>Push and pull updates</li>
+              <li>Work with team workflows</li>
+            </ul>
+          </article>
+
+          <article class="card roadmap-card">
+            <div class="level-badge advanced">Advanced</div>
+            <h3>Expert Workflows</h3>
+            <ul>
+              <li>Rebase and clean history</li>
+              <li>Stash temporary changes</li>
+              <li>Reset and revert safely</li>
+              <li>Resolve merge conflicts</li>
+              <li>Recover mistakes and collaborate better</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="lessons" class="section alt-bg">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Lessons</span>
+          <h2>Beginner to Expert Lessons</h2>
+          <p>
+            Use the tabs below to move through the Git learning journey.
+          </p>
+        </div>
+
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="tab-beginner">Beginner</button>
+          <button class="tab-btn" data-tab="tab-intermediate">Intermediate</button>
+          <button class="tab-btn" data-tab="tab-advanced">Advanced</button>
+        </div>
+
+        <div id="tab-beginner" class="tab-panel active">
+          <div class="lesson-grid">
+            <article class="card lesson-card">
+              <h3>1. What is Git?</h3>
+              <p>
+                Git is a version control system that tracks changes in your files over time.
+                It helps you save progress, return to earlier versions, and work with others.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>2. Create a Repository</h3>
+              <div class="code-block">git init</div>
+              <p>
+                This starts a new Git repository inside your project folder.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>3. Check What Changed</h3>
+              <div class="code-block">git status</div>
+              <p>
+                Shows untracked files, modified files, staged files, and your current branch.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>4. Stage Files</h3>
+              <div class="code-block">git add .</div>
+              <p>
+                Moves all changed files into the staging area so they can be committed.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>5. Save a Snapshot</h3>
+              <div class="code-block">git commit -m "Initial commit"</div>
+              <p>
+                Records a snapshot of the staged changes with a message.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>6. View History</h3>
+              <div class="code-block">git log --oneline</div>
+              <p>
+                Shows your commit history in a short readable format.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div id="tab-intermediate" class="tab-panel">
+          <div class="lesson-grid">
+            <article class="card lesson-card">
+              <h3>1. Create a Branch</h3>
+              <div class="code-block">git branch feature-navbar</div>
+              <p>
+                Creates a separate line of development for new work.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>2. Switch Branches</h3>
+              <div class="code-block">git switch feature-navbar</div>
+              <p>
+                Moves you from your current branch to another branch.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>3. Merge Work</h3>
+              <div class="code-block">git merge feature-navbar</div>
+              <p>
+                Combines work from the selected branch into your current branch.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>4. Connect to GitHub</h3>
+              <div class="code-block">git remote add origin https://github.com/username/repo.git</div>
+              <p>
+                Links your local project to a remote repository.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>5. Upload Changes</h3>
+              <div class="code-block">git push -u origin main</div>
+              <p>
+                Pushes your local commits to GitHub and sets the upstream branch.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>6. Download Changes</h3>
+              <div class="code-block">git pull origin main</div>
+              <p>
+                Gets the latest changes from GitHub and merges them into your branch.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <div id="tab-advanced" class="tab-panel">
+          <div class="lesson-grid">
+            <article class="card lesson-card">
+              <h3>1. Rebase for Cleaner History</h3>
+              <div class="code-block">git rebase main</div>
+              <p>
+                Replays your branch commits on top of the latest main branch.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>2. Save Temporary Work</h3>
+              <div class="code-block">git stash</div>
+              <p>
+                Stores your uncommitted changes so you can switch tasks safely.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>3. Restore Stashed Changes</h3>
+              <div class="code-block">git stash pop</div>
+              <p>
+                Applies the latest stashed changes back into your working directory.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>4. Undo Safely</h3>
+              <div class="code-block">git revert &lt;commit-id&gt;</div>
+              <p>
+                Creates a new commit that undoes an older commit without rewriting history.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>5. Move Back in History</h3>
+              <div class="code-block">git reset --hard HEAD~1</div>
+              <p>
+                Moves the branch backward and discards local changes. Use carefully.
+              </p>
+            </article>
+
+            <article class="card lesson-card">
+              <h3>6. Resolve Conflicts</h3>
+              <div class="code-block">git add .<br>git commit -m "Resolve conflict"</div>
+              <p>
+                After editing conflicting files, add them and create a conflict resolution commit.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="commands" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Reference</span>
+          <h2>Git Command Explorer</h2>
+          <p>
+            Click a command to see what it does.
+          </p>
+        </div>
+
+        <div class="command-layout">
+          <div class="command-list">
+            <button class="command-btn" data-command="git init">git init</button>
+            <button class="command-btn" data-command="git status">git status</button>
+            <button class="command-btn" data-command="git add .">git add .</button>
+            <button class="command-btn" data-command='git commit -m "message"'>git commit</button>
+            <button class="command-btn" data-command="git log --oneline">git log --oneline</button>
+            <button class="command-btn" data-command="git branch feature-x">git branch</button>
+            <button class="command-btn" data-command="git switch feature-x">git switch</button>
+            <button class="command-btn" data-command="git merge feature-x">git merge</button>
+            <button class="command-btn" data-command="git remote add origin URL">git remote add</button>
+            <button class="command-btn" data-command="git push -u origin main">git push</button>
+            <button class="command-btn" data-command="git pull origin main">git pull</button>
+            <button class="command-btn" data-command="git stash">git stash</button>
+            <button class="command-btn" data-command="git stash pop">git stash pop</button>
+            <button class="command-btn" data-command="git rebase main">git rebase</button>
+            <button class="command-btn" data-command="git revert abc123">git revert</button>
+            <button class="command-btn" data-command="git reset --hard HEAD~1">git reset --hard</button>
+          </div>
+
+          <div class="card command-output">
+            <h3>Command Output</h3>
+            <div id="commandDisplay" class="code-viewer">
+Select any Git command from the left to read its explanation.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="section alt-bg">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Workflow</span>
+          <h2>Basic Git Branching Flow</h2>
+          <p>
+            This is the common pattern many teams use when building features.
+          </p>
+        </div>
+
+        <div class="workflow-box">
+          <div class="flow-step">main</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">create feature branch</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">make changes</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">commit work</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">push branch</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">merge to main</div>
+        </div>
+
+        <div class="workflow-grid">
+          <article class="card">
+            <h3>Step 1</h3>
+            <p>Start from the latest main branch.</p>
+            <div class="code-block">git switch main<br>git pull origin main</div>
+          </article>
+
+          <article class="card">
+            <h3>Step 2</h3>
+            <p>Create your feature branch.</p>
+            <div class="code-block">git switch -c feature-login</div>
+          </article>
+
+          <article class="card">
+            <h3>Step 3</h3>
+            <p>Make edits and save them with commits.</p>
+            <div class="code-block">git add .<br>git commit -m "Build login UI"</div>
+          </article>
+
+          <article class="card">
+            <h3>Step 4</h3>
+            <p>Push your branch to GitHub.</p>
+            <div class="code-block">git push -u origin feature-login</div>
+          </article>
+
+          <article class="card">
+            <h3>Step 5</h3>
+            <p>Merge your work back after review.</p>
+            <div class="code-block">git switch main<br>git merge feature-login</div>
+          </article>
+
+          <article class="card">
+            <h3>Step 6</h3>
+            <p>Push the updated main branch.</p>
+            <div class="code-block">git push origin main</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Practice</span>
+          <h2>Practice Projects</h2>
+          <p>
+            These exercises help students move from theory to real Git usage.
+          </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="card project-card">
+            <h3>Project 1: Personal Notes Repo</h3>
+            <p>Create a Git repository for notes, make edits, and commit three versions.</p>
+            <span class="project-level beginner">Beginner</span>
+          </article>
+
+          <article class="card project-card">
+            <h3>Project 2: Portfolio Branch Update</h3>
+            <p>Create a new feature branch, update a webpage, merge the branch into main.</p>
+            <span class="project-level intermediate">Intermediate</span>
+          </article>
+
+          <article class="card project-card">
+            <h3>Project 3: Team Simulation</h3>
+            <p>Push to GitHub, pull changes, and practice a branch-based workflow.</p>
+            <span class="project-level intermediate">Intermediate</span>
+          </article>
+
+          <article class="card project-card">
+            <h3>Project 4: Conflict Recovery Lab</h3>
+            <p>Create a merge conflict, resolve it manually, and finish with a clean commit.</p>
+            <span class="project-level advanced">Advanced</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="exam" class="section alt-bg">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Assessment</span>
+          <h2>Final Exam</h2>
+          <p>
+            Answer the questions and check your score.
+          </p>
+        </div>
+
+        <div class="card exam-box">
+          <div class="question">
+            <p>1. Which command starts a new Git repository?</p>
+            <button class="answer-btn">git push</button>
+            <button class="answer-btn correct">git init</button>
+            <button class="answer-btn">git merge</button>
+          </div>
+
+          <div class="question">
+            <p>2. Which command shows changed and staged files?</p>
+            <button class="answer-btn">git log</button>
+            <button class="answer-btn correct">git status</button>
+            <button class="answer-btn">git remote</button>
+          </div>
+
+          <div class="question">
+            <p>3. Which command creates a snapshot of staged work?</p>
+            <button class="answer-btn">git branch</button>
+            <button class="answer-btn correct">git commit -m "message"</button>
+            <button class="answer-btn">git pull</button>
+          </div>
+
+          <div class="question">
+            <p>4. Which command creates a new branch?</p>
+            <button class="answer-btn correct">git branch feature-x</button>
+            <button class="answer-btn">git stash</button>
+            <button class="answer-btn">git revert</button>
+          </div>
+
+          <div class="question">
+            <p>5. Which command safely undoes an older commit by making a new commit?</p>
+            <button class="answer-btn">git reset --hard</button>
+            <button class="answer-btn correct">git revert</button>
+            <button class="answer-btn">git add</button>
+          </div>
+
+          <div class="question">
+            <p>6. Which command uploads your commits to GitHub?</p>
+            <button class="answer-btn">git log --oneline</button>
+            <button class="answer-btn">git branch</button>
+            <button class="answer-btn correct">git push</button>
+          </div>
+
+          <div class="exam-actions">
+            <button id="checkExam" class="btn btn-primary">Check Score</button>
+            <button id="resetExam" class="btn btn-secondary">Reset</button>
+          </div>
+
+          <div id="examResult" class="exam-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificate" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Completion</span>
+          <h2>Certificate Preview</h2>
+          <p>
+            Enter a name to preview the completion certificate.
+          </p>
+        </div>
+
+        <div class="certificate-wrap">
+          <div class="card certificate-form-box">
+            <label for="studentName">Student Name</label>
+            <input type="text" id="studentName" placeholder="Enter full name" />
+            <button id="updateCertificate" class="btn btn-primary">Update Certificate</button>
+          </div>
+
+          <div class="certificate-preview">
+            <div class="certificate-inner">
+              <p class="cert-top">Youooo Academy</p>
+              <h3>Certificate of Completion</h3>
+              <p>This certifies that</p>
+              <h4 id="certificateName">Your Name</h4>
+              <p>has successfully completed</p>
+              <h5>Youooo Git: Beginner to Expert</h5>
+              <p class="cert-date">Issued by Youooo Academy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Youooo Git Academy V2</p>
     </div>
-  </section>
-
-  <section id="quiz" class="section">
-    <h2>Quick Quiz</h2>
-    <div class="quiz-box">
-      <div class="question">
-        <p>1. Which command creates a new Git repository?</p>
-        <button class="quiz-btn" data-correct="true">git init</button>
-        <button class="quiz-btn">git push</button>
-        <button class="quiz-btn">git merge</button>
-      </div>
-
-      <div class="question">
-        <p>2. Which command uploads commits to GitHub?</p>
-        <button class="quiz-btn">git status</button>
-        <button class="quiz-btn" data-correct="true">git push</button>
-        <button class="quiz-btn">git add</button>
-      </div>
-
-      <div class="question">
-        <p>3. Which command creates a new commit that undoes an earlier commit?</p>
-        <button class="quiz-btn">git reset</button>
-        <button class="quiz-btn">git stash</button>
-        <button class="quiz-btn" data-correct="true">git revert</button>
-      </div>
-
-      <div id="quizResult" class="quiz-result"></div>
-      <button id="checkQuiz" class="btn primary">Check Answers</button>
-    </div>
-  </section>
-
-  <section id="certificate" class="section">
-    <h2>Certificate</h2>
-    <div class="certificate-card">
-      <p>
-        Complete the lessons and quiz, then use this certificate section later in
-        Youooo Academy for downloadable completion certificates.
-      </p>
-      <div class="certificate-preview">
-        <h3>Youooo Git Academy</h3>
-        <p>Certificate of Completion</p>
-        <p>This certifies that</p>
-        <h4 id="studentNamePreview">Your Name</h4>
-        <p>has completed Git Learning from Beginner to Expert</p>
-      </div>
-
-      <div class="certificate-form">
-        <input type="text" id="studentName" placeholder="Enter your name" />
-        <button id="updateCertificate" class="btn secondary">Update Name</button>
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <p>© 2026 Youooo Git Academy — Built for Youooo Academy</p>
   </footer>
 
   <script src="script.js"></script>
