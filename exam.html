@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youooo Git Final Exam V5</title>
+  <meta name="description" content="Final Git exam and certificate unlock." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="exam">
+  <header class="site-header">
+    <div class="container header-wrap">
+      <a href="index.html" class="brand">Youooo Git</a>
+
+      <button id="menuToggle" class="menu-toggle" aria-label="Open menu">☰</button>
+
+      <nav id="mainNav" class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="dictionary.html">Dictionary</a>
+        <a href="challenges.html">Challenges</a>
+        <a href="exam.html">Exam</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero small-hero">
+      <div class="container">
+        <span class="eyebrow">Assessment</span>
+        <h1>Final Git Exam</h1>
+        <p>Score 6 out of 8 or higher to pass and unlock the certificate.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card exam-box">
+          <div class="question">
+            <p>1. Which command creates a new Git repository?</p>
+            <button class="answer-btn">git push</button>
+            <button class="answer-btn correct">git init</button>
+            <button class="answer-btn">git merge</button>
+          </div>
+
+          <div class="question">
+            <p>2. Which command shows current branch, modified files, and staged files?</p>
+            <button class="answer-btn">git log</button>
+            <button class="answer-btn correct">git status</button>
+            <button class="answer-btn">git remote</button>
+          </div>
+
+          <div class="question">
+            <p>3. Which command stages all current changes?</p>
+            <button class="answer-btn correct">git add .</button>
+            <button class="answer-btn">git switch .</button>
+            <button class="answer-btn">git revert .</button>
+          </div>
+
+          <div class="question">
+            <p>4. Which command creates a new commit from staged work?</p>
+            <button class="answer-btn">git pull</button>
+            <button class="answer-btn">git branch</button>
+            <button class="answer-btn correct">git commit -m "message"</button>
+          </div>
+
+          <div class="question">
+            <p>5. Which command is commonly used to upload commits to GitHub?</p>
+            <button class="answer-btn correct">git push</button>
+            <button class="answer-btn">git log</button>
+            <button class="answer-btn">git stash</button>
+          </div>
+
+          <div class="question">
+            <p>6. Which command temporarily saves unfinished local changes?</p>
+            <button class="answer-btn">git merge</button>
+            <button class="answer-btn correct">git stash</button>
+            <button class="answer-btn">git init</button>
+          </div>
+
+          <div class="question">
+            <p>7. Which command safely undoes a commit with a new commit?</p>
+            <button class="answer-btn">git reset --hard</button>
+            <button class="answer-btn correct">git revert</button>
+            <button class="answer-btn">git branch</button>
+          </div>
+
+          <div class="question">
+            <p>8. Which command replays your branch commits on top of updated main?</p>
+            <button class="answer-btn correct">git rebase main</button>
+            <button class="answer-btn">git status</button>
+            <button class="answer-btn">git pull main</button>
+          </div>
+
+          <div class="exam-actions">
+            <button id="checkExam" class="btn btn-primary">Check Score</button>
+            <button id="resetExam" class="btn btn-secondary">Reset</button>
+          </div>
+
+          <div id="examResult" class="exam-result"></div>
+          <div id="examBreakdown" class="exam-breakdown"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt-bg">
+      <div class="container">
+        <div id="examPassBox" class="card lock-box center-box hidden">
+          <h3>Exam Passed</h3>
+          <p>You unlocked the certificate. Go to the home page to generate it.</p>
+          <a class="btn btn-primary" href="index.html">Open Certificate</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Youooo Git Academy V5</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
