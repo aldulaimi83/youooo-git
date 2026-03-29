@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Youooo Git Lessons V4</title>
-  <meta name="description" content="Git lessons for beginner to expert learning." />
+  <title>Youooo Git Lessons V5</title>
+  <meta name="description" content="Structured Git lessons from beginner to expert." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-page="lessons">
@@ -17,7 +17,9 @@
       <nav id="mainNav" class="main-nav">
         <a href="index.html">Home</a>
         <a href="lessons.html">Lessons</a>
+        <a href="dictionary.html">Dictionary</a>
         <a href="challenges.html">Challenges</a>
+        <a href="exam.html">Exam</a>
       </nav>
     </div>
   </header>
@@ -26,174 +28,139 @@
     <section class="page-hero small-hero">
       <div class="container">
         <span class="eyebrow">Lessons</span>
-        <h1>Git Lessons</h1>
-        <p>Complete lessons in order. Intermediate and advanced unlock as you progress.</p>
+        <h1>Git Lessons with Sidebar Navigation</h1>
+        <p>Study lessons in sequence. Levels unlock as you progress.</p>
       </div>
     </section>
 
     <section class="section">
-      <div class="container">
-        <div class="tab-buttons">
-          <button class="tab-btn active" data-tab="beginnerTab">Beginner</button>
-          <button class="tab-btn" data-tab="intermediateTab">Intermediate</button>
-          <button class="tab-btn" data-tab="advancedTab">Advanced</button>
-        </div>
+      <div class="container lessons-layout">
+        <aside class="lessons-sidebar card">
+          <h3>Lesson Navigation</h3>
+          <button class="side-link active" data-target="lesson1">1. What is Git?</button>
+          <button class="side-link" data-target="lesson2">2. Start a Repository</button>
+          <button class="side-link" data-target="lesson3">3. Check Status</button>
+          <button class="side-link" data-target="lesson4">4. Stage Files</button>
+          <button class="side-link" data-target="lesson5">5. Commit Changes</button>
+          <button class="side-link" data-target="lesson6">6. View History</button>
+          <button class="side-link" data-target="lesson7">7. Branches</button>
+          <button class="side-link" data-target="lesson8">8. Merge</button>
+          <button class="side-link" data-target="lesson9">9. GitHub Pages</button>
+          <button class="side-link" data-target="lesson10">10. Git in VS Code</button>
+          <button class="side-link" data-target="lesson11">11. Stash and Rebase</button>
+          <button class="side-link" data-target="lesson12">12. Revert and Reset</button>
+        </aside>
 
-        <div id="beginnerTab" class="tab-panel active">
-          <div class="lesson-grid">
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>1. What is Git?</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson1" /> Complete</label>
-              </div>
-              <p>Git tracks changes in files over time and lets you collaborate safely with others.</p>
-            </article>
+        <div class="lessons-content">
+          <article id="lesson1" class="card lesson-block active">
+            <div class="lesson-head">
+              <h3>1. What is Git?</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson1" /> Complete</label>
+            </div>
+            <p>Git is a version control system. It tracks changes in files over time and helps you work safely with your own history and with teams.</p>
+          </article>
 
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>2. Start a Repository</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson2" /> Complete</label>
-              </div>
-              <div class="code-block">git init</div>
-              <p>This creates a new Git repository in your current project folder.</p>
-            </article>
+          <article id="lesson2" class="card lesson-block">
+            <div class="lesson-head">
+              <h3>2. Start a Repository</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson2" /> Complete</label>
+            </div>
+            <div class="code-block">git init</div>
+            <p>This command creates a Git repository in the current folder.</p>
+          </article>
 
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>3. Check Status</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson3" /> Complete</label>
-              </div>
-              <div class="code-block">git status</div>
-              <p>See untracked files, modified files, staged files, and the current branch.</p>
-            </article>
+          <article id="lesson3" class="card lesson-block">
+            <div class="lesson-head">
+              <h3>3. Check Status</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson3" /> Complete</label>
+            </div>
+            <div class="code-block">git status</div>
+            <p>This shows untracked files, modified files, staged files, and your current branch.</p>
+          </article>
 
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>4. Stage Files</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson4" /> Complete</label>
-              </div>
-              <div class="code-block">git add .</div>
-              <p>Stage all current changes for the next commit.</p>
-            </article>
-          </div>
-        </div>
+          <article id="lesson4" class="card lesson-block">
+            <div class="lesson-head">
+              <h3>4. Stage Files</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson4" /> Complete</label>
+            </div>
+            <div class="code-block">git add .</div>
+            <p>This stages your changes for the next commit.</p>
+          </article>
 
-        <div id="intermediateTab" class="tab-panel">
-          <div id="intermediateLock" class="lock-box">
-            <h3>Intermediate Lessons Locked</h3>
-            <p>Complete at least 4 lessons to unlock this level.</p>
-          </div>
+          <article id="lesson5" class="card lesson-block locked-lesson" data-unlock="4">
+            <div class="lesson-head">
+              <h3>5. Commit Changes</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson5" /> Complete</label>
+            </div>
+            <div class="code-block">git commit -m "Initial commit"</div>
+            <p>A commit saves a snapshot of your staged work.</p>
+          </article>
 
-          <div id="intermediateContent" class="lesson-grid locked-content">
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>5. Commit Changes</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson5" /> Complete</label>
-              </div>
-              <div class="code-block">git commit -m "Initial commit"</div>
-              <p>Create a saved snapshot of your staged work.</p>
-            </article>
+          <article id="lesson6" class="card lesson-block locked-lesson" data-unlock="4">
+            <div class="lesson-head">
+              <h3>6. View History</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson6" /> Complete</label>
+            </div>
+            <div class="code-block">git log --oneline</div>
+            <p>This gives you a readable short history of commits.</p>
+          </article>
 
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>6. View History</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson6" /> Complete</label>
-              </div>
-              <div class="code-block">git log --oneline</div>
-              <p>See a short readable commit history.</p>
-            </article>
+          <article id="lesson7" class="card lesson-block locked-lesson" data-unlock="4">
+            <div class="lesson-head">
+              <h3>7. Branches</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson7" /> Complete</label>
+            </div>
+            <div class="code-block">git switch -c feature-navbar</div>
+            <p>Create and switch to a new feature branch in one step.</p>
+          </article>
 
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>7. Create and Switch Branches</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson7" /> Complete</label>
-              </div>
-              <div class="code-block">git switch -c feature-navbar</div>
-              <p>Create a feature branch and move to it in one step.</p>
-            </article>
+          <article id="lesson8" class="card lesson-block locked-lesson" data-unlock="4">
+            <div class="lesson-head">
+              <h3>8. Merge</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson8" /> Complete</label>
+            </div>
+            <div class="code-block">git merge feature-navbar</div>
+            <p>Merge branch work into your current branch.</p>
+          </article>
 
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>8. Merge a Branch</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson8" /> Complete</label>
-              </div>
-              <div class="code-block">git merge feature-navbar</div>
-              <p>Merge changes from a feature branch into your current branch.</p>
-            </article>
-          </div>
-        </div>
-
-        <div id="advancedTab" class="tab-panel">
-          <div id="advancedLock" class="lock-box">
-            <h3>Advanced Lessons Locked</h3>
-            <p>Complete at least 8 lessons to unlock this level.</p>
-          </div>
-
-          <div id="advancedContent" class="lesson-grid locked-content">
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>9. GitHub Pages Workflow</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson9" /> Complete</label>
-              </div>
-              <div class="code-block">git add .<br>git commit -m "Update site"<br>git push origin main</div>
-              <p>Typical workflow for updating a GitHub Pages website.</p>
-            </article>
-
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>10. Git in VS Code</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson10" /> Complete</label>
-              </div>
-              <p>Use Source Control in VS Code to stage files, write commit messages, and push changes.</p>
-            </article>
-
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>11. Stash and Rebase</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson11" /> Complete</label>
-              </div>
-              <div class="code-block">git stash<br>git rebase main</div>
-              <p>Temporarily store work and replay commits on top of the latest main.</p>
-            </article>
-
-            <article class="card lesson-card">
-              <div class="lesson-head">
-                <h3>12. Revert and Reset</h3>
-                <label><input type="checkbox" class="lesson-check" data-lesson="lesson12" /> Complete</label>
-              </div>
-              <div class="code-block">git revert &lt;commit-id&gt;<br>git reset --hard HEAD~1</div>
-              <p>Learn the safe undo method and the dangerous history rewrite method.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt-bg">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Command Quick Reference</span>
-          <h2>Git for GitHub Pages</h2>
-          <p>Common commands for updating your website repo.</p>
-        </div>
-
-        <div class="card code-panel">
-          <div class="code-block">git add .
-git commit -m "Update Youooo Git Academy"
+          <article id="lesson9" class="card lesson-block locked-lesson" data-unlock="8">
+            <div class="lesson-head">
+              <h3>9. GitHub Pages Workflow</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson9" /> Complete</label>
+            </div>
+            <div class="code-block">git add .
+git commit -m "Update site"
 git push origin main</div>
-        </div>
+            <p>This is a common workflow for updating a GitHub Pages website.</p>
+          </article>
 
-        <div class="section-heading extra-top">
-          <span class="eyebrow">Command Quick Reference</span>
-          <h2>Git for VS Code</h2>
-          <p>Use the terminal or Source Control panel together.</p>
-        </div>
+          <article id="lesson10" class="card lesson-block locked-lesson" data-unlock="8">
+            <div class="lesson-head">
+              <h3>10. Git in VS Code</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson10" /> Complete</label>
+            </div>
+            <p>VS Code can stage changes, show diffs, write commit messages, and push updates through Source Control or terminal.</p>
+          </article>
 
-        <div class="card code-panel">
-          <div class="code-block">git status
-git add .
-git commit -m "Make lesson updates"
-git push origin main</div>
+          <article id="lesson11" class="card lesson-block locked-lesson" data-unlock="8">
+            <div class="lesson-head">
+              <h3>11. Stash and Rebase</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson11" /> Complete</label>
+            </div>
+            <div class="code-block">git stash
+git rebase main</div>
+            <p>Stash saves temporary work. Rebase moves your branch commits on top of updated main.</p>
+          </article>
+
+          <article id="lesson12" class="card lesson-block locked-lesson" data-unlock="8">
+            <div class="lesson-head">
+              <h3>12. Revert and Reset</h3>
+              <label><input type="checkbox" class="lesson-check" data-lesson="lesson12" /> Complete</label>
+            </div>
+            <div class="code-block">git revert &lt;commit-id&gt;
+git reset --hard HEAD~1</div>
+            <p>Revert safely undoes with a new commit. Reset moves history back and can discard work.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -201,7 +168,7 @@ git push origin main</div>
 
   <footer class="site-footer">
     <div class="container">
-      <p>© 2026 Youooo Git Academy V4</p>
+      <p>© 2026 Youooo Git Academy V5</p>
     </div>
   </footer>
 
