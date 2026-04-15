@@ -68,6 +68,15 @@ code {
   font-size: 1.35rem;
   font-weight: 800;
   color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo-image {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
 }
 
 .main-nav {
@@ -648,8 +657,35 @@ code {
 .site-footer {
   padding: 28px 0 42px;
   border-top: 1px solid rgba(255,255,255,0.08);
-  text-align: center;
   color: var(--muted);
+}
+
+.site-footer .container {
+  display: flex;
+  gap: 14px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.network-footer-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.network-footer-links a {
+  color: var(--text);
+}
+
+.network-footer-links a:hover {
+  color: var(--primary);
+}
+
+.network-footer-label {
+  color: var(--muted);
+  font-weight: 700;
 }
 
 @media (max-width: 1100px) {
